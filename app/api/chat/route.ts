@@ -34,19 +34,19 @@ Be helpful, concise, and friendly. If you don't know the answer to a question, s
     }
 
     // Call OpenRouter API
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const response = await fetch('https://api.aimlapi.com/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY || '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'}`,
-        'HTTP-Referer': process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000', // Replace with your domain
+        'Authorization': `Bearer ${process.env.AIML_API_KEY}`,
+        'HTTP-Referer': process.env.NEXT_PUBLIC_BASE_URL || 'https://softsell-ojas.netlify.app/', // Replace with your domain
         'X-Title': 'SoftSell Assistant' // Replace with your app name
       },
       body: JSON.stringify({
-        model: 'anthropic/claude-3-haiku', // You can change this to any model supported by OpenRouter
+        model: 'gpt-4o', // You can change this to any model supported by OpenRouter
         messages: messages,
         temperature: 0.7,
-        max_tokens: 1024
+        max_tokens: 512
       }),
     });
 
